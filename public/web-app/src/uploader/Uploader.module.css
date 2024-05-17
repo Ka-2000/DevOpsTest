@@ -1,0 +1,82 @@
+/* Uploader.module.css */
+.uploaderContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.uploaderContainer:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.formTitle {
+  color: #2E608C;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.formSubtitle {
+  color: #2E608C;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.fileInput,
+.textInput,
+.selectInput {
+  border: 2px solid #2E608C;
+  background-color: #f9f9f9;
+  padding: 12px;
+  margin-bottom: 20px;
+  width: calc(100% - 24px);
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.fileInput:hover,
+.textInput:hover,
+.selectInput:hover {
+  border-color: #2E608C;
+}
+
+.fileInput:focus,
+.textInput:focus,
+.selectInput:focus {
+  border-color: #2E608C;
+  outline: none;
+}
+
+.relationTypeSelection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 0;
+}
+
+.checkboxContainer {
+  flex-basis: calc(33.333% - 20px);
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .uploaderContainer {
+    padding: 20px;
+  }
+
+  .formTitle {
+    font-size: 22px;
+  }
+}
+
+

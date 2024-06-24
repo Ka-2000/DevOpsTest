@@ -42,5 +42,5 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Report PhpUnit Tests            # Name of the check run which will be created
-        path: reports/phpUnitReportTest-*.xml    # Path to test results
-        reporter: php-unit 
+        path: build/phpunit/logs/*.xml
+        reporter: java-junit

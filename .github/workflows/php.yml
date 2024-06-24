@@ -40,12 +40,11 @@ jobs:
 
     - name: Run test suite
       run: composer run-script test
-
-
+      
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
-      if: success() || failure()    # Exécuter cette étape même si l'étape précédente échoue
+      if: success() || failure()    # run this step even if previous step failed
       with:
-        name: Report PhpUnit Tests           # Nom du check run qui sera créé
-        path: tests/phpunit.xml              # Chemin du fichier de rapport
+        name: Report PhpUnit Tests            # Name of the check run which will be created
+        path: tests/phpunit.xml
         reporter: java-junit

@@ -1,5 +1,7 @@
 {
     "name": "cesi/resources_relationnelles",
+    "description": "Composer Json for DevOpsTest",
+    "license": "proprietary",
     "autoload": {
         "psr-4": {
             "App\\": "src/"

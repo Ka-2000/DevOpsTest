@@ -40,7 +40,13 @@ jobs:
 
     - name: Run test suite
       run: composer run-script test
-      
+
+    - name: List test report directory
+      run: ls -l tests
+
+    - name: Display test report content
+      run: cat tests/phpunit.xml
+
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()    # Exécuter cette étape même si l'étape précédente échoue

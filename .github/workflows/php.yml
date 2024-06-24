@@ -47,4 +47,4 @@ jobs:
         name: Report PhpUnit Tests            # Name of the check run which will be created
         path: tests/phpunit.xml
         reporter: java-junit
-#comment for restart runner
+#comment for restart runners

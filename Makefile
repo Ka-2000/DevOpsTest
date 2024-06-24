@@ -47,7 +47,7 @@ unit-test:
 
 ## Run API tests
 api-test: env-test db-reload-test
-	$(EXEC_PHP) php -dmemory_limit=512M bin/phpunit --testsuite
+	$(EXEC_PHP) php -dmemory_limit=512M bin/phpunit --testsuite Integration
 	$(MAKE) env-dev
 
 ## Switch Environment to test

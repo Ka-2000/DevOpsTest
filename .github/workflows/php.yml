@@ -7,15 +7,32 @@ on:
     branches: [ "main" ]
 
 permissions:
+  statuses: write
+  checks: write
   contents: read
+  pull-requests: write
 
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup PHP Action
+      uses: shivammathur/setup-php@2.31.0
+      with:
+        php-version: '8.2'
+    
+    - name: Setup Java JDK
+      uses: actions/setup-java@v4.2.1
+      with:
+        distribution: 'zulu' # See 'Supported distributions' for available options
+        java-version: '21'
+
+    - name: Check Java version
+      run: java -version
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -28,7 +45,7 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
-
+    
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
@@ -37,3 +54,24 @@ jobs:
 
     - name: Run test suite
       run: composer run-script test
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      if: always()
+      with:
+        files: |
+          tests/phpunit.xml
+          tests/phpunit.trx
+          tests/phpunit.json      
+    
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v2
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.projectKey=Ka-2000_DevOpsTest
+          -Dsonar.organization=ka-2000
+
+
+        

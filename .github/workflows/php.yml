@@ -27,6 +27,9 @@ jobs:
     
     - name: Setup Java JDK
       uses: actions/setup-java@v4.2.1
+      with:
+        distribution: 'zulu' # See 'Supported distributions' for available options
+        java-version: '21'
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict

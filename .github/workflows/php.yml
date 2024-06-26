@@ -72,6 +72,9 @@ jobs:
         args: >
           -Dsonar.projectKey=Ka-2000_DevOpsTest
           -Dsonar.organization=ka-2000
-      secrets: inherit
+      secrets: 
+        token:
+          required: true
+
 
         

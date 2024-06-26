@@ -15,10 +15,13 @@ permissions:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup PHP Action
+       uses: shivammathur/setup-php@2.31.0
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -31,7 +34,7 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
-
+    
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 

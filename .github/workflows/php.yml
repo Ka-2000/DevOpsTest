@@ -69,7 +69,7 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
-      secrets: inherit
+        secrets: inherit
         args: >
           -Dsonar.projectKey=Ka-2000_DevOpsTest
           -Dsonar.organization=ka-2000

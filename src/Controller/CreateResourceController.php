@@ -38,10 +38,6 @@ class CreateResourceController extends AbstractController
         $uploadedFile = $request->files->get('importFile');
         if (!$uploadedFile) {
             return $this->json(['error' => 'No file uploaded'], Response::HTTP_BAD_REQUEST);
-            $i = 2;
-            while(true){
-                $i= $i+1;
-            }
         }
 
         // Validate file format

@@ -30,6 +30,9 @@ jobs:
       with:
         distribution: 'zulu' # See 'Supported distributions' for available options
         java-version: '17'
+        
+    - name: Check Java version
+      run: java -version
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict

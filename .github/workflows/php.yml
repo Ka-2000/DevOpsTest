@@ -43,6 +43,7 @@ jobs:
       
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1  # run this step even if previous step failed
+      if: success() || failure() 
       with:
         name: Report PhpUnit Tests            # Name of the check run which will be created
         path: tests/phpunit.xml

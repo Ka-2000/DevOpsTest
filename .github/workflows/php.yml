@@ -50,13 +50,13 @@ jobs:
           tests/phpunit.trx
           tests/phpunit.json      
     
-     - name: SonarCloud Scan
-       uses: SonarSource/sonarcloud-github-action@v1
-       env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-       with:
-          args: >
-            -Dsonar.projectKey=Ka-2000_DevOpsTest
-            -Dsonar.organization=ka-2000
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v1
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.projectKey=Ka-2000_DevOpsTest
+          -Dsonar.organization=ka-2000
                
         

@@ -29,8 +29,8 @@ jobs:
       uses: actions/setup-java@v4.2.1
       with:
         distribution: 'zulu' # See 'Supported distributions' for available options
-        java-version: '17'
-        
+        java-version: '21'
+
     - name: Check Java version
       run: java -version
 
@@ -65,7 +65,7 @@ jobs:
           tests/phpunit.json      
     
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1
+      uses: SonarSource/sonarcloud-github-action@v2
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:

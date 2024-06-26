@@ -35,6 +35,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@v2.3.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
@@ -48,5 +53,22 @@ jobs:
         files: |
           tests/phpunit.xml
           tests/phpunit.trx
-          tests/phpunit.json         
+          tests/phpunit.json      
+    
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v2.3.0
+
+    - name: Analyze with SonarCloud
+      uses: sonarsource/sonarcloud-github-action@v2.3.0
+      with:
+        projectBaseDir: my-custom-directory
+        args: >
+          -Dsonar.organization=my-organization
+          -Dsonar.projectKey=my-projectkey
+          -Dsonar.python.coverage.reportPaths=coverage.xml
+          -Dsonar.sources=lib/
+          -Dsonar.test.exclusions=tests/**
+          -Dsonar.tests=tests/
+          -Dsonar.verbose=true
+               
         

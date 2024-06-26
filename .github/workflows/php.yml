@@ -67,9 +67,11 @@ jobs:
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v2
       env:
-        SONAR_TOKEN: Ka-2000_DevOpsTest
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
+      secrets: inherit
         args: >
           -Dsonar.projectKey=Ka-2000_DevOpsTest
           -Dsonar.organization=ka-2000
+
         
